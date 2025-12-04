@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+uploads/
+outputs/
+*.pyc
+*.pyo
+*.swp
+*.swo
+.DS_Store
+my-history/
