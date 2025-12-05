@@ -40,40 +40,40 @@ summary:
     amortization_years: 30
 budget:
   acquisition:
-    Land Purchase: 3600000
-    Transfer Taxes: 12500
-    Legal Costs: 45000
-    Pre-Acquisition Due Diligence Costs: 42000
+    Land Purchase: 3350000
+    Transfer Taxes: 500
+    Legal Costs: 5000
+    Pre-Acquisition Due Diligence Costs: 17000
   soft_costs:
-    Architect - Design Phase: 180000
-    Architect - CA: 110000
-    Engineering Consultants (Structural, Civil, MEP, Etc.): 145000
-    Legal: 90000
-    Entitlement Consultants: 150000
+    Architect - Design Phase: 0
+    Architect - CA: 35000
+    Engineering Consultants (Structural, Civil, MEP, Etc.): 40000
+    Legal: 25000
+    Entitlement Consultants: 3400
     Entitlement Fees: 275000
   hard_costs:
     Sitework: 420000
     Foundation: 580000
-    Structure: 3200000
-    MEP: 1650000
+    Structure: 920000
+    MEP: 200000
   ff_and_e:
-    Furniture: 825000
-    Fixtures: 210000
-    Equipment: 190000
-    Operating Supplies: 60000
+    Furniture: 141848
+    Fixtures: 9800
+    Equipment: 200000
+    Operating Supplies: 50000
   financing_costs:
-    General Marketing: 95000
-    Signage: 45000
+    General Marketing: 50000
+    Signage: 15000
     Website: 25000
     Hosting: 1500
   other_costs: {}
 waterfall:
-  lp_equity_share: 0.92
-  tier1_lp_split: 0.9
-  tier1_hurdle: 0.08
-  tier2_gp_promote: 0.15
-  tier3_gp_promote: 0.22
-  post_stabilization_gp_share: 0.28
+  lp_equity_share: 0.7
+  tier1_lp_split: 0.7
+  tier1_hurdle: 0.5
+  tier2_gp_promote: 0
+  tier3_gp_promote: 0
+  post_stabilization_gp_share: 0.7
 row_ranges:
 - sheet: MonthlyCF
   row: 206

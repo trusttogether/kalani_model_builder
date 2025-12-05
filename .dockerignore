@@ -1,0 +1,12 @@
+.git
+.gitignore
+.venv
+uploads
+outputs
+__pycache__/
+*.pyc
+*.pyo
+*.swp
+my-history
+google-cloud-cli-*.tar.gz
+google-cloud-sdk
