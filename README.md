@@ -47,7 +47,8 @@ This repo automates the "blue cell" input workflow for the A.CRE Hotel Developme
    python app.py
    ```
 3. Visit http://127.0.0.1:5000/ in a browser.
-4. Upload the template `.xlsx`, review/edit the visible input fields, and click **Generate Workbook**.
-5. After the success banner appears, click **Download Latest Workbook** (top-right button) to fetch the XLSX.
+4. Pick the template type from the dropdown and click **Load Template Inputs** to swap in the matching YAML blueprint (e.g., A.CRE vs. UNDERWRITING v11).
+5. Upload the corresponding `.xlsx`, review/edit the visible input fields, and click **Generate Workbook**.
+6. After the success banner appears, click **Download Latest Workbook** (top-right button) to fetch the XLSX.
 
 The UI mirrors every blue cell, so the client never has to edit YAML by hand (though the raw file is still available under `kalani_config.yaml` if needed).

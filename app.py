@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 from pathlib import Path
+from typing import Dict
 
 from flask import (
     Flask,
@@ -19,6 +20,21 @@ CONFIG_PATH = BASE_DIR / "kalani_config.yaml"
 SCRIPT_PATH = BASE_DIR / "rebuild_kalani.py"
 UPLOAD_DIR = BASE_DIR / "uploads"
 UPLOAD_DIR.mkdir(exist_ok=True)
+PRESET_DIR = BASE_DIR / "presets"
+
+TEMPLATE_PRESETS: Dict[str, Dict[str, object]] = {
+    "acre_hotel": {
+        "label": "A.CRE Hotel Development (v1.57)",
+        "description": "Original A.CRE underwriting template with Kalani sample inputs.",
+        "path": PRESET_DIR / "acre_hotel.yaml",
+    },
+    "underwriting_dev11": {
+        "label": "Underwriting Development Model (v11)",
+        "description": "Client-provided UNDERWRITING - Development-Model - 11.xlsx inputs.",
+        "path": PRESET_DIR / "underwriting_dev11.yaml",
+    },
+}
+DEFAULT_TEMPLATE_SLUG = next(iter(TEMPLATE_PRESETS))
 
 app = Flask(__name__)
 app.secret_key = "kalani-automation"
@@ -28,7 +44,10 @@ def load_config() -> dict:
     if CONFIG_PATH.exists():
         with CONFIG_PATH.open("r", encoding="utf-8") as fh:
             return yaml.safe_load(fh) or {}
-    return {}
+    preset = load_preset_config(DEFAULT_TEMPLATE_SLUG)
+    if preset:
+        ensure_section(preset, "project")["template_type"] = DEFAULT_TEMPLATE_SLUG
+    return preset or {}
 
 
 def save_config(config: dict) -> None:
@@ -59,16 +78,52 @@ def parse_value(raw: str | None):
         return text
 
 
+def load_preset_config(slug: str) -> dict:
+    meta = TEMPLATE_PRESETS.get(slug)
+    if not meta:
+        return {}
+    path = meta["path"]
+    if not path.exists():
+        return {}
+    with path.open("r", encoding="utf-8") as fh:
+        return yaml.safe_load(fh) or {}
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     cfg = load_config()
     project = ensure_section(cfg, "project")
+    current_template_slug = project.get("template_type") or DEFAULT_TEMPLATE_SLUG
+    project["template_type"] = current_template_slug
     summary_inputs = ensure_section(cfg, "summary", "inputs")
     budget_cfg = cfg.setdefault("budget", {})
     cell_inputs = cfg.setdefault("cell_inputs", {})
     row_ranges = cfg.setdefault("row_ranges", [])
 
     if request.method == "POST":
+        action = request.form.get("action", "generate")
+        selected_template = request.form.get("template_type") or current_template_slug
+        if selected_template not in TEMPLATE_PRESETS:
+            flash("Unknown template type selected.", "danger")
+            return redirect(url_for("index"))
+        template_changed = selected_template != current_template_slug or action == "load_template"
+        if template_changed:
+            preset_cfg = load_preset_config(selected_template)
+            if not preset_cfg:
+                flash("Preset file missing for selected template.", "danger")
+                return redirect(url_for("index"))
+            cfg = preset_cfg
+            project = ensure_section(cfg, "project")
+            project["template_type"] = selected_template
+            summary_inputs = ensure_section(cfg, "summary", "inputs")
+            budget_cfg = cfg.setdefault("budget", {})
+            cell_inputs = cfg.setdefault("cell_inputs", {})
+            row_ranges = cfg.setdefault("row_ranges", [])
+            if action == "load_template":
+                save_config(cfg)
+                flash(f"Loaded defaults for {TEMPLATE_PRESETS[selected_template]['label']}.", "info")
+                return redirect(url_for("index"))
+
         uploaded = request.files.get("template_file")
         if uploaded and uploaded.filename:
             save_path = UPLOAD_DIR / uploaded.filename
@@ -131,6 +186,7 @@ def index():
             if val is not None:
                 rr["value"] = parse_value(val)
 
+        project["template_type"] = selected_template
         save_config(cfg)
 
         try:
@@ -158,6 +214,7 @@ def index():
         budget=budget_cfg,
         cell_inputs=cell_inputs,
         row_ranges=row_ranges,
+        template_options=TEMPLATE_PRESETS,
         has_output=Path(project.get("output", "updated_kalani_model_v2.xlsx")).exists(),
     )
 

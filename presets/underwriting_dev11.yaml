@@ -1,6 +1,6 @@
 project:
-  template_type: acre_hotel
-  template: A.CRE-Hotel-Development-Model-beta-v1.57.xlsx
+  template_type: underwriting_dev11
+  template: UNDERWRITING - Development-Model - 11.xlsx
   output: updated_kalani_model_v2.xlsx
 summary:
   highlights:

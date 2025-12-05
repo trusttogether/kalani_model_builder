@@ -33,6 +33,25 @@
       <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm bg-white" id="kalani-form">
         <section class="mb-4">
           <h2 class="h5">1. Template & Output</h2>
+          <div class="row g-3 mb-3">
+            <div class="col-md-12">
+              <label class="form-label">Template Type</label>
+              <div class="input-group">
+                <select name="template_type" class="form-select">
+                  {% for slug, meta in template_options.items() %}
+                    <option value="{{ slug }}" {% if project.get('template_type') == slug %}selected{% endif %}>
+                      {{ meta.label }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-outline-secondary" name="action" value="load_template">Load Template Inputs</button>
+              </div>
+              {% set selected_meta = template_options.get(project.get('template_type')) %}
+              {% if selected_meta %}
+                <div class="form-text">{{ selected_meta.description }}</div>
+              {% endif %}
+            </div>
+          </div>
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label">Template (.xlsx)</label>
@@ -138,7 +157,7 @@
         {% endif %}
 
         <div class="mt-4">
-          <button class="btn btn-primary w-100" type="submit">Generate Workbook</button>
+          <button class="btn btn-primary w-100" type="submit" name="action" value="generate">Generate Workbook</button>
         </div>
       </form>
     </div>

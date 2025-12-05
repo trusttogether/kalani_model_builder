@@ -10,33 +10,33 @@ summary:
     refi_note: Refi planned Month 30 after stabilization
     distribution_note: Post-refi distributions 70/30 split
   inputs:
-    property_name: Kalani Blue Resort
-    address: 88-2201 Napoopoo Rd.
-    city_state_zip: Captain Cook, HI 96704
+    property_name: Hotel Fearon
+    address: 123 Howard Street
+    city_state_zip: Orlando, FL
     room_count: 225
-    gross_square_feet: 245000
-    analysis_start_month: 7
-    analysis_start_year: 2024
-    operations_start_month: 1
-    operations_start_year: 2026
-    hold_period_years: 7
-    mezz_toggle: true
-    exit_cap_rate: 0.055
-    sale_cost_rate: 0.035
-    mezz_ltc: 0.12
+    gross_square_feet: 200000
+    analysis_start_month: 9
+    analysis_start_year: 2019
+    operations_start_month: 9
+    operations_start_year: 2022
+    hold_period_years: 6
+    mezz_toggle: 'On'
+    exit_cap_rate: 0.05
+    sale_cost_rate: 0.03
+    mezz_ltc: 0.09184272859373861
     senior_floor_rate: 0.03
     senior_ceiling_rate: 0.05
     perm_floor_rate: 0.03
     perm_ceiling_rate: 0.05
     dial_in_interest_rate: 500
-    secondary_ltc_control: 0.48
+    secondary_ltc_control: 0.48825
     refi_interest_rate_bps: 250
-    operating_cashflow_pct_to_interest: 1.0
-    going_in_cap_rate: 0.055
-    ltv_ratio: 0.62
-    senior_interest_rate: 0.058
-    loan_fee_percent: 0.012
-    interest_only_months: 9
+    operating_cashflow_pct_to_interest: 1
+    going_in_cap_rate: 0.05
+    ltv_ratio: 0.6
+    senior_interest_rate: 0.06
+    loan_fee_percent: 0.01
+    interest_only_months: 7
     amortization_years: 30
 budget:
   acquisition:
@@ -88,20 +88,20 @@ row_ranges:
 cell_inputs:
   OpCashFlow:
     H4: 1
-    J11: 0.56
-    L11: 0.61
-    N11: 0.64
-    P11: 0.66
+    J11: 0.68
+    L11: 0.68
+    N11: 0.68
+    P11: 0.68
     R11: 0.68
-    T11: 0.69
-    V11: 0.7
-    X11: 0.71
-    Z11: 0.72
-    AB11: 0.72
-    H12: 215
+    T11: 0.68
+    V11: 0.68
+    X11: 0.68
+    Z11: 0.68
+    AB11: 0.68
+    H12: 125
     J13: 0.05
-    L13: 0.04
-    N13: 0.035
+    L13: 0.05
+    N13: 0.03
     P13: 0.03
     R13: 0.03
     T13: 0.03
@@ -109,21 +109,21 @@ cell_inputs:
     X13: 0.03
     Z13: 0.03
     AB13: 0.03
-    H23: 18.5
-    H29: 6.25
-    H35: 2.25
-    G41: 0.04
-    H41: 410000
-    G42: 0.035
-    H42: 265000
-    G43: 0.032
-    H43: 71500
+    H23: 14.5
+    H29: 5
+    H35: 1.7
+    G41: 0.03
+    H41: 394764.3296009541
+    G42: 0.03
+    H42: 240683.68277280085
+    G43: 0.03
+    H43: 46070.47894736843
     H49: 12.65
     H55: 2.45
-    H61: 4.99
+    H61: 4.987406946788665
     H67: 14.2
     H73: 7.6
-    G79: 0.025
+    G79: 0.03
     J51: 0.02
     L51: 0.02
     N51: 0.02
@@ -144,29 +144,29 @@ cell_inputs:
     X75: 0.02
     Z75: 0.02
     AB75: 0.02
-    H82: 60000
-    J82: 61200
-    L82: 62424
-    N82: 63672
-    P82: 64945
-    R82: 66244
-    T82: 67568
-    V82: 68919
-    X82: 70297
-    Z82: 71703
-    AB82: 73137
-    H83: 35000
-    J83: 35700
-    L83: 36414
-    N83: 37142
-    P83: 37885
-    R83: 38643
-    T83: 39416
-    V83: 40205
-    X83: 41009
-    Z83: 41829
-    AB83: 42666
-    H84: 1800
+    H82: 50000
+    J82: =+H82*1.02
+    L82: =+J82*1.02
+    N82: =+L82*1.02
+    P82: =+N82*1.02
+    R82: =+P82*1.02
+    T82: =+R82*1.02
+    V82: =+T82*1.02
+    X82: =+V82*1.02
+    Z82: =+X82*1.02
+    AB82: =+Z82*1.02
+    H83: 25000
+    J83: =+H83*1.02
+    L83: =+J83*1.02
+    N83: =+L83*1.02
+    P83: =+N83*1.02
+    R83: =+P83*1.02
+    T83: =+R83*1.02
+    V83: =+T83*1.02
+    X83: =+V83*1.02
+    Z83: =+X83*1.02
+    AB83: =+Z83*1.02
+    H84: 1234
     J84: 1435
     L84: 2123
     N84: 2321
