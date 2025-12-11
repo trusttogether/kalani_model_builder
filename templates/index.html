@@ -37,9 +37,6 @@
             <div class="col-md-6">
               <label class="form-label">Template (.xlsx)</label>
               <input type="file" name="template_file" class="form-control" accept=".xlsx,.xlsm">
-              {% if project.get('template') %}
-                <div class="form-text text-truncate">Current: {{ project.get('template') }}</div>
-              {% endif %}
             </div>
             <div class="col-md-6">
               <label class="form-label">Output filename</label>
