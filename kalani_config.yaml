@@ -10,20 +10,20 @@ summary:
     refi_note: Refi planned Month 30 after stabilization
     distribution_note: Post-refi distributions 70/30 split
   inputs:
-    property_name: Kalani Blue Resort
-    address: 88-2201 Napoopoo Rd.
-    city_state_zip: Captain Cook, HI 96704
-    room_count: 225
-    gross_square_feet: 245000
-    analysis_start_month: 7
-    analysis_start_year: 2024
-    operations_start_month: 1
-    operations_start_year: 2026
-    hold_period_years: 7
+    property_name: ''
+    address: ''
+    city_state_zip: ''
+    room_count: ''
+    gross_square_feet: ''
+    analysis_start_month: ''
+    analysis_start_year: ''
+    operations_start_month: ''
+    operations_start_year: ''
+    hold_period_years: ''
     mezz_toggle: true
-    exit_cap_rate: 0.055
-    sale_cost_rate: 0.035
-    mezz_ltc: 0.12
+    exit_cap_rate: ''
+    sale_cost_rate: ''
+    mezz_ltc: ''
     senior_floor_rate: 0.03
     senior_ceiling_rate: 0.05
     perm_floor_rate: 0.03
